@@ -1,0 +1,8 @@
+# Node.jsアプリの設定情報を保持するConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-app-configmap
+data:
+  # Redisの接続先ホストとして、Redisのサービス名を指定
+  REDIS_HOST: "redis-service"

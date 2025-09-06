@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  # Node.jsアプリケーションサービス
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - REDIS_HOST=redis
+
+  # Redisサービス
+  redis:
+    image: "redis:alpine"

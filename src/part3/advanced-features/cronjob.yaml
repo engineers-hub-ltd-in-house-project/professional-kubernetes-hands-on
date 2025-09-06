@@ -1,0 +1,21 @@
+# 毎分実行されるCronJob
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello-cronjob
+spec:
+  schedule: "*/1 * * * *" # 毎分
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: hello
+              image: busybox:1.28
+              command:
+                [
+                  "/bin/sh",
+                  "-c",
+                  "date; echo Hello from the Kubernetes cluster",
+                ]
+          restartPolicy: OnFailure

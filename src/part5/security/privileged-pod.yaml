@@ -1,0 +1,11 @@
+# Pod Security Standardsのデモで利用する、特権付きPod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: privileged-pod
+spec:
+  containers:
+    - name: main
+      image: nginx
+      securityContext:
+        privileged: true # 特権付きコンテナ

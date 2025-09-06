@@ -1,0 +1,29 @@
+# RBACデモ用のServiceAccount
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pod-reader-sa
+---
+# Podの参照権限のみを持つRole
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-reader-role
+rules:
+  - apiGroups: [""] # "" はコアAPIグループを示す
+    resources: ["pods"]
+    verbs: ["get", "watch", "list"]
+---
+# ServiceAccountとRoleを紐付けるRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-reader-binding
+subjects:
+  - kind: ServiceAccount
+    name: pod-reader-sa
+    apiGroup: ""
+roleRef:
+  kind: Role
+  name: pod-reader-role
+  apiGroup: rbac.authorization.k8s.io

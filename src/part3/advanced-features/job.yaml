@@ -1,0 +1,14 @@
+# 一度だけ実行されるJob
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pi-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: pi
+          image: perl:5.34
+          command: ["perl", "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never # 失敗しても再起動しない
+  backoffLimit: 4 # 4回までリトライ

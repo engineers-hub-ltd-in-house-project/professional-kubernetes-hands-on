@@ -1,0 +1,12 @@
+# Network Policyのデモで利用するフロントエンドアプリ（クライアント役）
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-pod
+  labels:
+    app: frontend
+spec:
+  containers:
+    - name: frontend
+      image: busybox:1.28
+      command: ["/bin/sh", "-c", "sleep 3600"]

@@ -1,0 +1,36 @@
+# Node.jsアプリのPodを管理するDeployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment
+spec:
+  replicas: 2 # Podを2つにスケール
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+        - name: node-app
+          # 注意: このイメージは事前にDocker Hub等にpushされている必要があります
+          # 今回はローカルのMinikube環境でイメージを共有する設定を使います
+          image: nodejs-hello:1.0
+          imagePullPolicy: Never # ローカルのイメージを強制的に使用
+          ports:
+            - containerPort: 3000
+          env:
+            # ConfigMapから環境変数を読み込む
+            - name: REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: node-app-configmap
+                  key: REDIS_HOST
+            # Secretから環境変数を読み込む
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secret
+                  key: password

@@ -1,0 +1,32 @@
+# Ingressのハンズオンで利用する二つ目のアプリ
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: world-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: world-app
+  template:
+    metadata:
+      labels:
+        app: world-app
+    spec:
+      containers:
+        - name: world
+          image: "gcr.io/google-samples/hello-app:2.0"
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: world-app-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: world-app

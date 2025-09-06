@@ -1,0 +1,23 @@
+# パスベースでルーティングを行うIngressリソース
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /hello
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-app-service
+                port:
+                  number: 80
+          - path: /world
+            pathType: Prefix
+            backend:
+              service:
+                name: world-app-service
+                port:
+                  number: 80

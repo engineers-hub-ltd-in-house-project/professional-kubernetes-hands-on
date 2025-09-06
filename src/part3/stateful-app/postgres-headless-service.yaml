@@ -1,0 +1,13 @@
+# PostgreSQL Podへの安定したネットワークIDを提供するためのヘッドレスサービス
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-headless-service
+spec:
+  # ヘッドレスサービスにするにはclusterIPをNoneに設定
+  clusterIP: None
+  ports:
+    - port: 5432
+      name: postgres
+  selector:
+    app: postgres

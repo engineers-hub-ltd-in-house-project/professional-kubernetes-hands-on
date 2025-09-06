@@ -1,0 +1,14 @@
+# Node.jsアプリを外部に公開するためのNodePortサービス
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app-service
+spec:
+  type: NodePort
+  ports:
+    # クラスタ外部からは30080ポートでアクセス
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30080
+  selector:
+    app: node-app

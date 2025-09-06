@@ -1,0 +1,29 @@
+# RedisサーバーのPodを管理するDeployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:alpine
+          ports:
+            - containerPort: 6379
+          # Secretからパスワードを環境変数として読み込む
+          env:
+            - name: REDIS_ARGS
+              value: "--requirepass $(REDIS_PASSWORD)"
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secret
+                  key: password

@@ -1,0 +1,16 @@
+{
+  "name": "professional-kubernetes-hands-on",
+  "version": "1.0.0",
+  "description": "本書籍『実践 Kubernetes ハンズオンガイド』の原稿、ソースコード、および関連アセットを管理するリポジトリです。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lefthook": "^1.12.3",
+    "prettier": "^3.6.2"
+  }
+}
