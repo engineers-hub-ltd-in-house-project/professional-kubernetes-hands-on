@@ -118,6 +118,8 @@ graph TD
     IAM -- "権限を定義" --> S3
     STS -- "このロールを引き受ける" --> IAM
     OIDC -- "信頼" --> STS
+```
+
 <center>図12-1: IRSAの仕組み</center>
 
 ## 6. 【See】AWS Load Balancer Controller

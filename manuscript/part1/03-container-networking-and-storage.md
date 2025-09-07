@@ -24,15 +24,17 @@ Dockerホスト上には`docker0`という仮想的なネットワークイン�
 graph TD
     subgraph "Dockerホスト"
         direction LR
-        A[docker0 ブリッジ] -- "172.17.0.1" ---
+        A[docker0 ブリッジ]
         subgraph "コンテナA"
-            B[eth0] -- "172.17.0.2"
+            B[eth0]
         end
         subgraph "コンテナB"
-            C[eth0] -- "172.17.0.3"
+            C[eth0]
         end
         A --- B
         A --- C
+        B -.-> |"172.17.0.2"| A
+        C -.-> |"172.17.0.3"| A
     end
     B -- "ping 172.17.0.3" --> C
 ```
@@ -51,7 +53,7 @@ graph TD
 graph TD
     subgraph "Dockerホスト"
         direction LR
-        A[my-net ブリッジ] ---
+        A[my-net ブリッジ]
         subgraph "app (コンテナ)"
             B[eth0]
         end

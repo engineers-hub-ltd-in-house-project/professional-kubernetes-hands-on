@@ -62,8 +62,8 @@ graph TD
             Libs2 --> App2[アプリB]
         end
 
-        Hypervisor --> "VM 1"
-        Hypervisor --> "VM 2"
+        Hypervisor --> VM1
+        Hypervisor --> VM2
     end
 ```
 
@@ -92,8 +92,8 @@ graph TD
             Libs2[ライブラリ] --> App2[アプリB]
         end
 
-        ContainerEngine --> "Container 1"
-        ContainerEngine --> "Container 2"
+        ContainerEngine --> Container1
+        ContainerEngine --> Container2
     end
 ```
 
@@ -121,8 +121,8 @@ graph TD
         subgraph "Container D"
             Libs_D[ライブラリ] --> App_D[アプリD]
         end
-        Engine --> "Container C"
-        Engine --> "Container D"
+        Engine --> ContainerC
+        Engine --> ContainerD
     end
 
     style GuestOS_A fill:#ffeedd

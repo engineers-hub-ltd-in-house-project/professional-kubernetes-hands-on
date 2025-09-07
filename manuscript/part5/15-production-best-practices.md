@@ -29,7 +29,7 @@ graph TD
     end
     subgraph "Pullモデル (GitOps)"
         U2[開発者] -- "git push" --> Git[Gitリポジトリ]
-        O[Argo CD<br>(クラスタ内オペレーター)] -- "監視" --> Git
+        O["Argo CD (クラスタ内オペレーター)"] -- "監視" --> Git
         O -- "変更を検知し、同期" --> K2[Kubernetesクラスタ]
     end
 ```

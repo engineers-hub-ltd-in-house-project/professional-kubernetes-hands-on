@@ -33,7 +33,7 @@ graph TD
     end
 
     subgraph "ユーザー"
-        Pod --> PVC[PVC<br>"10GiB欲しい"]
+        Pod --> PVC["PVC: 10GiB欲しい"]
     end
 
     PVC -- "要求に合うPVを探して束縛(Bind)" --> PV2
@@ -49,8 +49,8 @@ StorageClassは、「どのような種類のストレージか」（例: `fast-
 
 ```mermaid
 graph TD
-    Pod --> PVC[PVC<br>StorageClass: "fast-ssd"]
-    PVC -- "要求" --> SC[StorageClass: "fast-ssd"]
+    Pod --> PVC["PVC: StorageClass fast-ssd"]
+    PVC -- "要求" --> SC["StorageClass: fast-ssd"]
     SC -- "動的にプロビジョニング" --> PV[新しいPVを作成]
     PVC -- "束縛" --> PV
 ```
