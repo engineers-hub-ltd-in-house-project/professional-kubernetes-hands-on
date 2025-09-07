@@ -70,11 +70,11 @@ graph TD
         M -- "指示" --> W2[ワーカー2]
 
         subgraph W1
-            C1[Task(コンテナ)]
-            C2[Task(コンテナ)]
+            C1["Task: コンテナ"]
+            C2["Task: コンテナ"]
         end
         subgraph W2
-            C3[Task(コンテナ)]
+            C3["Task: コンテナ"]
         end
     end
 

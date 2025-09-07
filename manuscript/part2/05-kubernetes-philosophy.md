@@ -29,7 +29,7 @@ graph TD
 
     subgraph "宣言的モデル (Declarative)"
         direction LR
-        E[ユーザー] --> F[YAMLファイル<br>(あるべき姿)];
+        E[ユーザー] --> F["YAMLファイル: あるべき姿"]
         F -- "kubectl apply" --> G((Kubernetes));
         G -- "差分を自動で修正" --> H[現在の状態];
     end
@@ -50,7 +50,7 @@ Kubernetesクラスタは、大きく分けて2種類のノード（サーバー
 
 ```mermaid
 graph TD
-    U[ユーザー] -- "kubectl" --> CP[コントロールプレーン<br>(マスターノード)];
+    U[ユーザー] -- "kubectl" --> CP["コントロールプレーン: マスターノード"]
 
     subgraph "Kubernetes クラスタ"
         CP -- "管理" --> W1[ワーカーノード1];
