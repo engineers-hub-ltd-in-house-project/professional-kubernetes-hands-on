@@ -22,13 +22,13 @@ Dockerホスト上には`docker0`という仮想的なネットワークイン�
 
 ```mermaid
 graph TD
-    subgraph Dockerホスト
+    subgraph "Dockerホスト"
         direction LR
         A[docker0 ブリッジ] -- "172.17.0.1" ---
-        subgraph コンテナA
+        subgraph "コンテナA"
             B[eth0] -- "172.17.0.2"
         end
-        subgraph コンテナB
+        subgraph "コンテナB"
             C[eth0] -- "172.17.0.3"
         end
         A --- B
@@ -49,7 +49,7 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph Dockerホスト
+    subgraph "Dockerホスト"
         direction LR
         A[my-net ブリッジ] ---
         subgraph "app (コンテナ)"
@@ -127,7 +127,7 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph Dockerホスト
+    subgraph "Dockerホスト"
         V[Volume]
     end
     subgraph "コンテナA"

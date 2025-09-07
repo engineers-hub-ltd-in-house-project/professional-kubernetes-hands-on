@@ -20,7 +20,7 @@ Prometheusは**プル型モデル**を採用しています。これは、Promet
 
 ```mermaid
 graph TD
-    subgraph Kubernetesクラスタ
+    subgraph "Kubernetesクラスタ"
         Prometheus[Prometheusサーバー] -- "Scrape" --> App1[Pod<br>/metrics]
         Prometheus -- "Scrape" --> App2[Pod<br>/metrics]
         Prometheus -- "Scrape" --> KSM[kube-state-metrics<br>/metrics]
@@ -97,11 +97,11 @@ $ kubectl port-forward svc/prometheus-grafana 3000:80 -n monitoring
 
 ```mermaid
 graph TD
-    subgraph ノード1
+    subgraph "ノード1"
         P1[Pod] --> L1[ログファイル]
         Agent1[Agent] -- "収集" --> L1
     end
-    subgraph ノード2
+    subgraph "ノード2"
         P2[Pod] --> L2[ログファイル]
         Agent2[Agent] -- "収集" --> L2
     end

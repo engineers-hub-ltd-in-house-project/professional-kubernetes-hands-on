@@ -19,13 +19,13 @@
 
 ```mermaid
 graph TD
-    subgraph サーバー1
+    subgraph "サーバー1"
         C1[C] --> C2[C]
     end
-    subgraph サーバー2
+    subgraph "サーバー2"
         C3[C] --> C4[C]
     end
-    subgraph サーバー3
+    subgraph "サーバー3"
         C5[C]
     end
 

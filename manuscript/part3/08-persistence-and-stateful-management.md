@@ -73,7 +73,8 @@ graph TD
         direction LR
         D[Deployment] --> P1[pod-random-xyz]
         D --> P2[pod-random-abc]
-        P1 & P2 --> PVC_Shared[Shared PVC]
+                P1 --> PVC_Shared[Shared PVC]
+        P2 --> PVC_Shared[Shared PVC]
     end
     subgraph StatefulSet
         direction LR

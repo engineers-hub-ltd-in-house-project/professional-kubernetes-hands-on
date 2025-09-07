@@ -17,12 +17,12 @@
 
 ```mermaid
 graph TD
-    subgraph 開発者のPC (macOS)
+    subgraph "開発者のPC (macOS)"
         A[アプリ v1.0] --> B(ライブラリA v1.2)
         A --> C(Ruby v2.7)
     end
 
-    subgraph 本番サーバー (Linux)
+    subgraph "本番サーバー (Linux)"
         D[アプリ v1.0] --> E(ライブラリA v1.1)
         D --> F(Ruby v2.6)
     end
@@ -45,25 +45,25 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph 物理サーバー
+    subgraph "物理サーバー"
         direction LR
         HW[ハードウェア] --> HostOS[ホストOS]
         HostOS --> Hypervisor[ハイパーバイザー]
 
-        subgraph VM 1
+        subgraph "VM 1"
             direction TB
             GuestOS1[ゲストOS] --> Libs1[ライブラリ]
             Libs1 --> App1[アプリA]
         end
 
-        subgraph VM 2
+        subgraph "VM 2"
             direction TB
             GuestOS2[ゲストOS] --> Libs2[ライブラリ]
             Libs2 --> App2[アプリB]
         end
 
-        Hypervisor --> VM1
-        Hypervisor --> VM2
+        Hypervisor --> "VM 1"
+        Hypervisor --> "VM 2"
     end
 ```
 
@@ -77,23 +77,23 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph 物理サーバー
+    subgraph "物理サーバー"
         direction LR
         HW[ハードウェア] --> HostOS[ホストOS]
         HostOS --> ContainerEngine[コンテナエンジン]
 
-        subgraph Container 1
+        subgraph "Container 1"
             direction TB
             Libs1[ライブラリ] --> App1[アプリA]
         end
 
-        subgraph Container 2
+        subgraph "Container 2"
             direction TB
             Libs2[ライブラリ] --> App2[アプリB]
         end
 
-        ContainerEngine --> Container1
-        ContainerEngine --> Container2
+        ContainerEngine --> "Container 1"
+        ContainerEngine --> "Container 2"
     end
 ```
 
@@ -115,8 +115,14 @@ graph TD
     subgraph "コンテナ"
         HW2[ハードウェア] --> OS2[ホストOS]
         OS2 --> Engine[コンテナエンジン]
-        Engine --> Libs_C[ライブラリ] & App_C[アプリC]
-        Engine --> Libs_D[ライブラリ] & App_D[アプリD]
+        subgraph "Container C"
+            Libs_C[ライブラリ] --> App_C[アプリC]
+        end
+        subgraph "Container D"
+            Libs_D[ライブラリ] --> App_D[アプリD]
+        end
+        Engine --> "Container C"
+        Engine --> "Container D"
     end
 
     style GuestOS_A fill:#ffeedd
@@ -152,7 +158,10 @@ graph TD
         ServiceD[...]
     end
 
-    BigApp -- "分割" --> ServiceA & ServiceB & ServiceC & ServiceD
+        BigApp -- "分割" --> ServiceA
+    BigApp -- "分割" --> ServiceB
+    BigApp -- "分割" --> ServiceC
+    BigApp -- "分割" --> ServiceD
 ```
 
 <center>図1-5: モノリスからマイクロサービスへ</center>
